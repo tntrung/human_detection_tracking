@@ -1,0 +1,28 @@
+function index=quarter_test2(T)
+if T(1)==0 && T(2) ==0
+    index=0; %central
+elseif T(1)>=0 && T(2)>=0
+    if T(1)<T(2)
+        index=1;
+    else
+        index=2;
+    end
+elseif T(1)>=0 && T(2)<=0
+    if T(1)>T(2)*-1
+        index=3;
+    else
+    	index=4;
+    end
+elseif T(1)<=0 && T(2)>=0
+    if T(1)*-1<T(2)
+        index=5;
+    else
+        index=6;
+    end    
+else %if T(1)<0 && T(2)<0
+    if T(1)>T(2)
+        index=7;
+    else
+        index=8;
+    end
+end

@@ -1,0 +1,26 @@
+function HMM=UpdateHMM2(HMM,weight,index)
+Parameter;
+if index~=0
+    HMM.A(1)=HMM.A(1)*weight*arrayHMM(1);    
+    error=2;
+    for i=index+1:index+4
+        nearindex=mod(i+1,8);
+        HMM.A(nearindex)=HMM.A(nearindex)*weight*arrayHMM(error);    
+        nearindex=i-1;
+        if nearindex<2
+           nearindex=nearindex+8; 
+        end
+        HMM.A(nearindex)=HMM.A(nearindex)*weight*arrayHMM(error);    
+        error=error+1;
+    end
+    nearindex=mod(index+4,8);
+    HMM.A(nearindex)=HMM.A(nearindex)*weight*arrayHMM(error);    
+else
+    for i=2:8
+        HMM.A(i)=HMM.A(i)*weight;
+    end    
+end
+%standard
+HMM.A=HMM.A/sum(HMM.A);
+%count
+HMM.B(index)=HMM.B(index)+1;
