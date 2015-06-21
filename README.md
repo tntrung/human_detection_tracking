@@ -1,4 +1,4 @@
-# Human Face Tracking in Video Sequences
+# Human Tracking in Video Sequences
 
 A C/C++ implementation of pedestrian detection and tracking of original paper:
 
@@ -14,4 +14,6 @@ The tracking method: mf_boostingclassifier.cpp (using mex to build, it was inclu
 2. Run hogdetector.exe in /hogdetector to detect automatically bounding box in video.
 3. Run Main.m 
 
-You need to make sure the correct path of OpenCV to build mex file.
+You need to make sure the correct path of OpenCV to build mex file. 
+
+Notice that  You have to run hogdetector at first to have bounding boxes before running tracking program.
