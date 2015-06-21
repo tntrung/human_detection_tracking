@@ -8,6 +8,13 @@
 #define SQROOTHALF 0.7071
 #define INITSIGMA( numAreas ) ( static_cast<float>( sqrt( 256.0f*256.0f / 12.0f * (numAreas) ) ) );
 
+static CvHistogram* copyhistogram2(CvHistogram *t)
+{
+	CvHistogram*tt=NULL;
+	cvCopyHist(t,&tt);
+	return tt;
+}
+
 FeatureHaar::FeatureHaar(Size patchSize)
 : m_areas(NULL), m_weights(NULL), m_scaleAreas(NULL), m_scaleWeights(NULL)
 {
@@ -454,12 +461,7 @@ void FeatureHaar::generateRandomFeature(Size patchSize)
 			(float)(m_areas[curArea].width*m_areas[curArea].height);
 	}
 }
-CvHistogram* copyhistogram2(CvHistogram*t)
-{
-	CvHistogram*tt=NULL;
-	cvCopyHist(t,&tt);
-	return tt;
-}
+
 bool FeatureHaar::eval(CvHistogram*hist, ImageRepresentation* image, Rect ROI, float* result) 
 {
 	*result = 0.0f;

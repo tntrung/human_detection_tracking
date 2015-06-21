@@ -7,6 +7,11 @@
 #include <assert.h>
 #include <string.h>
 
+#include <cv.h>
+#include <highgui.h>
+
+static CvHistogram* copyhistogram2(CvHistogram* t);
+
 class FeatureHaar
 {
 
@@ -52,3 +57,5 @@ private:
 	float maxcomputegetsum;
 	float mincomputegetsum;
 };
+
+
